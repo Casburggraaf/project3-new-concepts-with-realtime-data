@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style/style.css">
-  <title></title>
-</head>
-<body>
+<%- include('partials/head.ejs') %>
 
-  <script type="text/javascript" src="js/app.js" charset="utf-8"></script>
-</body>
-</html>
+	<svg viewBox="0 0 120 120">
+		<g>
+			<line x1="106" x2="108" y1="32" y2="14"/>
+			<line x1="106" x2="88" y1="31" y2="30"/>
+			<circle id="circle" cx="60" cy="60" r="54"/> 	<!-- these units are relative to the viewport (120 / 2) - (12 / 2) = 54	-->
+		</g>
+		<circle class="progress" cx="60" cy="60" r="54"/>
+	</svg>
+
+<%- include('partials/foot.ejs') %>
