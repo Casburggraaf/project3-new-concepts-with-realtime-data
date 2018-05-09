@@ -4,9 +4,9 @@ var percent=cnt.innerText;
 var interval;
 interval=setInterval(function(){
   percent++;
-  cnt.innerHTML = percent;
+  cnt.innerHTML = percent + ' drankjes';
   water.style.transform='translate(0'+','+(100-percent)+'%)';
-  if(percent==100){
+  if(percent == 32){
     clearInterval(interval);
   }
-},60);
+},120);

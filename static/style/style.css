@@ -21,6 +21,16 @@ img {
 	margin-left: 2%;
 }
 
+/* svg */
+.circulair {
+	position: absolute;
+	z-index: 10;
+}
+
+.waves {
+	z-index: 0;
+}
+
 .circulair svg {
 	margin-top: 10vh;
 	margin-left: 10vw;
@@ -51,6 +61,8 @@ img {
 }
 
 line {
+	position: fixed;
+	z-index: 50;
 	stroke-width: 2;
 	stroke: rgb(138,144,155);
 }
