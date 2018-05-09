@@ -10,27 +10,30 @@ body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-color: #192C47;
+  background-color: #3C7046;
   font-family: 'Roboto', sans-serif;
 }
 
-svg {
-	margin-top: 10vh;
-	margin-left: 10vw;
-  width: 80vw;
-  height: 80vh;
-  transform: rotate(-90deg);
+/* header */
+img {
+	width: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
 }
 
-circle {
+.circulair svg {
+	margin-top: 10vh;
+	margin-left: 10vw;
+	width: 80vw;
+	height: 80vh;
+	transform: rotate(-90deg);
+}
+
+.circulair #circle {
   fill: none;
 	stroke: rgb(138,144,155);
   stroke-width: 2;
 	stroke-dasharray: 309.292;
-}
-
-#circle {
-	fill: rgba(255,255,255,0.1);
 }
 
 .mask {
@@ -39,7 +42,7 @@ circle {
 
 .progress {
   fill: none;
-  stroke: #f77a52;
+  stroke: white;
   stroke-width: 5;
   stroke-dasharray: 339.292;
   /* 2 * π * 54 ≈ 339.292*/
@@ -60,30 +63,81 @@ polyline {
 	stroke-linejoin: round;
 }
 
+/* waves */
+.box {
+  height: 40vw;
+  width: 40vw;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.box .percent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 64px;
+}
+
+.box .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(0, 100%);
+          transform: translate(0, 100%);
+  background: #6B8D62;
+}
+
+.box .water_wave {
+  width: 200%;
+  position: absolute;
+  bottom: 100%;
+}
+
+.box .water_wave_back {
+  right: 0;
+  fill: #A39E47;
+  -webkit-animation: wave-back 1.4s infinite linear;
+          animation: wave-back 1.4s infinite linear;
+}
+
+.box .water_wave_front {
+  left: 0;
+  fill: #6B8D62;
+  margin-bottom: -1px;
+  -webkit-animation: wave-front .7s infinite linear;
+          animation: wave-front .7s infinite linear;
+}
+
+@keyframes wave-front {
+  100% {
+	  transform: translate(-50%, 0);
+  }
+}
+
+@keyframes wave-back {
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+
 @keyframes progress {
   to {
     stroke-dashoffset: 135.717;
     /* 60%: 339.292 * (1 - 0.6) ≈ 135.717 */
   }
-}
-
-@keyframes wave {
-	0% {
-		x: -400px;
-	}
-	100% {
-		x: 0;
-	}
-}
-
-
-@keyframes fill-up {
-	0% {
-		height: 0;
-		y: 130px;
-	}
-	100% {
-		height: 160px;
-		y: -30px;
-	}
 }
