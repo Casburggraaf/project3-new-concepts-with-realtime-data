@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@stomp/stompjs": "^4.0.3",
     "ejs": "^2.5.7",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "sockjs": "^0.3.19",
+    "sockjs-client": "^1.1.4",
+    "websocket": "^1.0.26",
+    "ws": "^5.1.1"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",

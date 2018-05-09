@@ -1,4 +1,6 @@
-var express = require('express')
+var express = require('express');
+var SockJS = require('sockjs-client/dist/sockjs.js');
+var Stomp = require('@stomp/stompjs');
 
 express()
   .use(express.static('static'))
@@ -12,38 +14,43 @@ function index(req, res) {
   res.render('index.ejs');
 }
 
-const api = {
-  apiBasisUrl: "https://api.themoviedb.org/3/tv/",
-  apiKey: null,
-  requestPopular(pageNum) {
-    const _this = this;
-    // Makes a promise for the XMLHttpRequest request
-    const promise = new Promise(function (resolve, reject) {
-      const request = new XMLHttpRequest();
 
-      // Making the url and creating a GET request
-      const url = `${_this.apiBasisUrl}popular?api_key=${_this.apiKey}&page=${pageNum}`;
+var onConnect = function() {
+    console.log("connecte");
+    client.subscribe("exchange/power/C0", callback);
+    // called back after the client is connected and authenticated to the STOMP server
+  };
 
-      request.open('GET', url, true);
+var error_callback = function(error) {
+    // display the error's message header:
+    console.log(error);
+  };
 
-      request.onload = function () {
-        if (request.status >= 200 && request.status < 400) {
-          //console.log(JSON.parserequest.responseText);
-          console.log(JSON.parse(request.responseText));
+var callback = function(message) {
+   // called when the client receives a STOMP message from the server
+   console.log("connect");
+   client.subscribe("exchange/power/C0", callback);
+   // if (message.body) {
+   //   console.log("got message with body " + message.body)
+   // } else {
+   //   console.log("got empty message");
+   // }
+ };
 
-          resolve();
-        } else {
-          reject(request.status); // Error handeling
-        }
-      };
+var url = new SockJS('https://app.jouliette.net/stomp/');
+// console.log(url);
+// var client = Stomp.client('wss://app.jouliette.net/stomp/317/srlf3u51/websocket');
+// var client = Stomp.client(url);
+// var url = new WebSocket('wws://app.jouliette.net/stomp/');
+console.log(url);
+var client = Stomp.client(url);
+// var client = Stomp.over(function(){
+//        return new WebSocket('https://app.jouliette.net/stomp/')
+//      });
 
-      request.onerror = function () {
-        reject("Failed to proform api req"); // Error handeling
-      };
+ client.connect('web', 'mnwdTGgQu5zPmSrz', onConnect, error_callback, "/");
+// client.subscribe("exchange/power/C0", callback);
 
-      request.send();
-    });
 
-    return promise;
-  }
-};
+// client.reconnect_delay = 5000;
+console.log("loaded");
