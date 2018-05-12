@@ -56,8 +56,9 @@ img {
   stroke-width: 5;
   stroke-dasharray: 339.292;
   /* 2 * π * 54 ≈ 339.292*/
-  stroke-dashoffset: 339.292;;
-  animation: progress 4s linear forwards;
+  stroke-dashoffset: 339.292;
+	/* 230.71855999999997 */
+  /* animation: progress 4s linear forwards; */
 }
 
 line {
@@ -109,8 +110,7 @@ polyline {
   z-index: 2;
   width: 100%;
   height: 100%;
-  -webkit-transform: translate(0, 100%);
-          transform: translate(0, 100%);
+  transform: translate(0, 100%);
   background: #6B8D62;
 }
 
@@ -123,16 +123,14 @@ polyline {
 .box .water_wave_back {
   right: 0;
   fill: #A39E47;
-  -webkit-animation: wave-back 1.4s infinite linear;
-          animation: wave-back 1.4s infinite linear;
+  animation: wave-back 1.4s infinite linear;
 }
 
 .box .water_wave_front {
   left: 0;
   fill: #6B8D62;
   margin-bottom: -1px;
-  -webkit-animation: wave-front .7s infinite linear;
-          animation: wave-front .7s infinite linear;
+	animation: wave-front .7s infinite linear;
 }
 
 @keyframes wave-front {
@@ -148,8 +146,8 @@ polyline {
 }
 
 @keyframes progress {
-  to {
-    stroke-dashoffset: 135.717;
-    /* 60%: 339.292 * (1 - 0.6) ≈ 135.717 */
-  }
+  /*to {
+    stroke-dashoffset: 312.717;
+      /* 60%: 339.292 * (1 - 0.6) ≈ 135.717 */
+  }/*
 }
