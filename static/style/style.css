@@ -133,6 +133,29 @@ polyline {
 	animation: wave-front .7s infinite linear;
 }
 
+/* dot menu */
+nav {
+	position: fixed;
+	width: 20vw;
+	margin-top: 2%;
+	justify-content: center;
+}
+
+nav button {
+	cursor: pointer;
+	/* display: inline-block; */
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid black;
+	margin-left: 5px;
+}
+
+.activeSlider {
+	background-color: black;
+}
+
+/* keyframes */
 @keyframes wave-front {
   100% {
 	  transform: translate(-50%, 0);
@@ -146,8 +169,8 @@ polyline {
 }
 
 @keyframes progress {
-  /*to {
+  /* to {
     stroke-dashoffset: 312.717;
-      /* 60%: 339.292 * (1 - 0.6) ≈ 135.717 */
-  }/*
+       60%: 339.292 * (1 - 0.6) ≈ 135.717
+  } */
 }
