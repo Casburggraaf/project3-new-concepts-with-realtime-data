@@ -6,7 +6,11 @@ for(var i = 0; i < sections.length; i++) {
 	var dot = document.createElement('button');
 	nav.appendChild(dot);
 }
+
 var dots = document.querySelectorAll('nav button');
+var buttons = document.querySelectorAll("button");
+var slideIndex = 1;
+
 dots[0].classList.add("activeSlider")
 
 //dot navigation
@@ -16,6 +20,20 @@ function specificDivs(n) {
 		dots[i].classList.remove("activeSlider");
 	}
 	dots[slideIndex-1].classList.add("activeSlider");
+}
+
+function showDivs(n) {
+	var i;
+	if (n > sections.length){
+		slideIndex = 1
+	}
+	if (n < 1) {
+		slideIndex = sections.length
+	}
+	for (i = 0; i < sections.length; i++) {
+		 sections[i].style.display = "none";
+	}
+	sections[slideIndex-1].style.display = "flex";
 }
 
 dots.forEach(function(el, index){

@@ -14,21 +14,21 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* header */
+/* HEADER */
 img {
 	width: 10%;
 	margin-top: 2%;
 	margin-left: 2%;
 }
 
-/* svg */
+/* SECTION MAIN */
+.main {
+}
+
+/* SVG CIRCLE */
 .circulair {
 	position: absolute;
 	z-index: 10;
-}
-
-.waves {
-	z-index: 0;
 }
 
 .circulair svg {
@@ -37,6 +37,7 @@ img {
 	width: 80vw;
 	height: 80vh;
 	transform: rotate(-90deg);
+	overflow: hidden;
 }
 
 .circulair #circle {
@@ -44,10 +45,6 @@ img {
 	stroke: rgb(138,144,155);
   stroke-width: 2;
 	stroke-dasharray: 309.292;
-}
-
-.mask {
-	animation: wave 0.7s infinite linear, fill-up 10s infinite ease-out alternate;
 }
 
 .progress {
@@ -76,7 +73,13 @@ polyline {
 	stroke-linejoin: round;
 }
 
-/* waves */
+/* STATE 1: energy */
+/* STATE 2: food */
+/* STATE 3: drinks */
+.waves {
+	z-index: 0;
+}
+
 .box {
   height: 40vw;
   width: 40vw;
@@ -133,29 +136,35 @@ polyline {
 	animation: wave-front .7s infinite linear;
 }
 
-/* dot menu */
+/* DOT MENU */
 nav {
+	display: flex;
+	flex-direction: column;
 	position: fixed;
-	width: 20vw;
+	top: 20vh;
+	right: 3vw;
+	height: 50vh;
 	margin-top: 2%;
 	justify-content: center;
+	align-content: flex-end;
 }
 
 nav button {
 	cursor: pointer;
-	/* display: inline-block; */
+	display: block;
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	border: 2px solid black;
-	margin-left: 5px;
+	border: 2px solid white;
+	background-color: rgba(255,255,255,0.1);
+  margin-top: 0.5rem;
 }
 
 .activeSlider {
-	background-color: black;
+	background-color: white;
 }
 
-/* keyframes */
+/* KEYFRAMES */
 @keyframes wave-front {
   100% {
 	  transform: translate(-50%, 0);
