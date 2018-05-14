@@ -10,6 +10,176 @@ body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-color: #192C47;
+  background-color: #3C7046;
   font-family: 'Roboto', sans-serif;
+}
+
+/* HEADER */
+img {
+	width: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
+}
+
+/* SECTION MAIN */
+.main {
+}
+
+/* SVG CIRCLE */
+.circulair {
+	position: absolute;
+	z-index: 10;
+}
+
+.circulair svg {
+	margin-top: 10vh;
+	margin-left: 10vw;
+	width: 80vw;
+	height: 80vh;
+	transform: rotate(-90deg);
+	overflow: hidden;
+}
+
+.circulair #circle {
+  fill: none;
+	stroke: rgb(138,144,155);
+  stroke-width: 2;
+	stroke-dasharray: 309.292;
+}
+
+.progress {
+  fill: none;
+  stroke: white;
+  stroke-width: 5;
+  stroke-dasharray: 339.292;
+  /* 2 * π * 54 ≈ 339.292*/
+  stroke-dashoffset: 339.292;
+	/* 230.71855999999997 */
+  /* animation: progress 4s linear forwards; */
+}
+
+line {
+	position: fixed;
+	z-index: 50;
+	stroke-width: 2;
+	stroke: rgb(138,144,155);
+}
+
+polyline {
+	stroke: rgba(255,255,255,0.5);
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* STATE 1: energy */
+/* STATE 2: food */
+/* STATE 3: drinks */
+.waves {
+	z-index: 0;
+}
+
+.box {
+  height: 40vw;
+  width: 40vw;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.box .percent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 64px;
+}
+
+.box .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  transform: translate(0, 100%);
+  background: #6B8D62;
+}
+
+.box .water_wave {
+  width: 200%;
+  position: absolute;
+  bottom: 100%;
+}
+
+.box .water_wave_back {
+  right: 0;
+  fill: #A39E47;
+  animation: wave-back 1.4s infinite linear;
+}
+
+.box .water_wave_front {
+  left: 0;
+  fill: #6B8D62;
+  margin-bottom: -1px;
+	animation: wave-front .7s infinite linear;
+}
+
+/* DOT MENU */
+nav {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 20vh;
+	right: 3vw;
+	height: 50vh;
+	margin-top: 2%;
+	justify-content: center;
+	align-content: flex-end;
+}
+
+nav button {
+	cursor: pointer;
+	display: block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid white;
+	background-color: rgba(255,255,255,0.1);
+  margin-top: 0.5rem;
+}
+
+.activeSlider {
+	background-color: white;
+}
+
+/* KEYFRAMES */
+@keyframes wave-front {
+  100% {
+	  transform: translate(-50%, 0);
+  }
+}
+
+@keyframes wave-back {
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+
+@keyframes progress {
+  /* to {
+    stroke-dashoffset: 312.717;
+       60%: 339.292 * (1 - 0.6) ≈ 135.717
+  } */
 }
