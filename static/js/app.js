@@ -46,9 +46,18 @@
 
 		dashoffset = 339.292 * (1 - (drinks/100));
 		dashoffsetToilet = 339.292 * (1 - (toilets/100));
-		wave.init();
+
 		template.init();
-		energy.init();
+
+		var dots = document.querySelectorAll('nav button');
+						dots[4].addEventListener("click", () => {
+								wave.init();
+						});
+
+						var dots = document.querySelectorAll('nav button');
+						dots[2].addEventListener("click", () => {
+								energy.init();
+						});
 
 	});
 
@@ -92,7 +101,7 @@
 
 			//how many drinks
 		  percent2++;
-		  cnt2.innerHTML = percent2 + ' W';
+		  cnt2.innerHTML = percent2 + ' W verbruik';
 			y = 100 - percent;
 		  if(percent2 == energy.consumption){
 		    clearInterval(energy.interval1);
@@ -112,7 +121,7 @@
 
 			//how many drinks
 		  percent2--;
-		  cnt2.innerHTML = percent2 + ' W';
+		  cnt2.innerHTML = percent2 + ' W opbrengst';
 			y = 100 - percent;
 		  if(percent2 == (energy.consumption - energy.solar)){
 		    clearInterval(energy.interval2);
