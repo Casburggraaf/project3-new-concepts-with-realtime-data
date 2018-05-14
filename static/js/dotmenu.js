@@ -11,15 +11,15 @@ var dots = document.querySelectorAll('nav button');
 var buttons = document.querySelectorAll("button");
 var slideIndex = 1;
 
-dots[0].classList.add("activeSlider")
+dots[0].classList.add("activeButton")
 
 //dot navigation
 function specificDivs(n) {
 	showDivs(slideIndex = n);
 	for (i = 0; i < dots.length; i++) {
-		dots[i].classList.remove("activeSlider");
+		dots[i].classList.remove("activeButton");
 	}
-	dots[slideIndex-1].classList.add("activeSlider");
+	dots[slideIndex-1].classList.add("activeButton");
 }
 
 function showDivs(n) {
@@ -31,9 +31,9 @@ function showDivs(n) {
 		slideIndex = sections.length
 	}
 	for (i = 0; i < sections.length; i++) {
-		 sections[i].style.display = "none";
+		sections[i].classList.remove('activeSlider')
 	}
-	sections[slideIndex-1].style.display = "flex";
+	sections[slideIndex-1].classList.add('activeSlider');
 }
 
 dots.forEach(function(el, index){
