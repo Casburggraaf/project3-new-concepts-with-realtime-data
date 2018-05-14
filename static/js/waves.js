@@ -13,9 +13,10 @@ var x = 0;
 var y;
 
 //change values of drinks/toilets here
-var drinks = 32;
-var toilets = 8;
+var drinks = 52;
+var toilets = 10;
 var dashoffset = 339.292 * (1 - (drinks/100));
+var dashoffsetToilet = 339.292 * (1 - (toilets/100));
 
 //load drinks
 interval1 = setInterval(function(){
@@ -39,14 +40,12 @@ interval1 = setInterval(function(){
 setTimeout(function(){
 	interval2 = setInterval(function(){
 		//keyframe
-		var dashoffsetToilet = 339.292 * (1 - (toilets/100));
 		progress.style.strokeDashoffset = dashoffset;
-
-		var sec = ((milisec / 1000) * drinks) - toilets;
-		progress.style.animationPlayState = "running";
-		progress.style.animation = "progress " +  sec + "s linear forwards";
-
 		getRule(dashoffsetToilet);
+
+		var sec = 2;
+		// var sec = ((milisec / 1000) * drinks) - toilets;
+		progress.style.animation = "progress " +  sec + "s linear forwards";
 
 		percent--;
 		cnt.innerHTML = percent + ' toilet';
@@ -61,7 +60,7 @@ setTimeout(function(){
 
 // change keyframes in javascript
 var cssRule;
-function getRule(dashoffset) {
+function getRule(dash) {
 	var rule;
 	var ss = document.styleSheets;
 
@@ -70,7 +69,8 @@ function getRule(dashoffset) {
 			rule = ss[i].cssRules[x];
 			if (rule.name == "progress" && rule.type == CSSRule.KEYFRAMES_RULE) {
 				cssRule = rule;
-				cssRule.appendRule("100% { stroke-dashoffset:" + dashoffset + "; }");
+				console.log(dash)
+				cssRule.appendRule("100% { stroke-dashoffset:" + dash + "; }");
 			}
 		}
 	}
