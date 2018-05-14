@@ -159,7 +159,7 @@ polyline {
 }
 
 .barcode > rect {
-  animation: fadeInLaser 1s forwards infinite;
+  animation: fadeInLaser 4s forwards infinite;
   animation-delay: 2.6s;
 }
 
@@ -179,6 +179,7 @@ polyline {
 
 .data span {
 	font-size: 2em;
+	animation: pulse 1s forwards infinite;
 }
 
 /* STATE 1: energy */
@@ -315,12 +316,35 @@ nav button {
 }
 @keyframes fadeInLaser {
   from {
-    opacity: 0;
+		opacity: 1;
+    transform: translateY(-10%);
   }
   50% {
-    opacity: 1;
+		opacity: 1;
+    transform: translateY(5%)
   }
   to {
-    opacity: 0;
+		opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes move {
+  0%, 100% { transform: translateY(135%); }
+  50% { transform: translateY(0%); }
+  75% { transform: translateY(272%); }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
   }
 }
