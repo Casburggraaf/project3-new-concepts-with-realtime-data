@@ -1,4 +1,7 @@
-var express = require('express')
+var express = require('express');
+var SockJS = require('sockjs-client-node');
+var Stomp = require('stompjs');
+var MongoClient = require('mongodb').MongoClient;
 
 express()
   .use(express.static('static'))
@@ -9,41 +12,107 @@ express()
   .listen(3010)
 
 function index(req, res) {
-  res.render('index.ejs');
+  let usage = engergy.getUsage().then((usage) => {
+    // res.render('index.ejs');
+    res.render('index.ejs', {data: usage});
+    console.log(usage);
+    
+  })
 }
 
-const api = {
-  apiBasisUrl: "https://api.themoviedb.org/3/tv/",
-  apiKey: null,
-  requestPopular(pageNum) {
-    const _this = this;
-    // Makes a promise for the XMLHttpRequest request
-    const promise = new Promise(function (resolve, reject) {
-      const request = new XMLHttpRequest();
+const stomp = {
+  url: new SockJS('https://app.jouliette.net/stomp/'),
+  client: null,
+  data: [],
+  init(){
+    this.client = Stomp.over(this.url);
+    this.client.connect('web', 'mnwdTGgQu5zPmSrz', this.onConnect, console.error, '/');
+  },
+  onConnect(){
+    console.log("connected");
 
-      // Making the url and creating a GET request
-      const url = `${_this.apiBasisUrl}popular?api_key=${_this.apiKey}&page=${pageNum}`;
+    stomp.client.subscribe("/exchange/power/C0", stomp.onData);
+  },
+  onData(data){
+    let json = JSON.parse(data.body);
+    
+    let parseData = {
+      time: Date.now(),
+      solar: json.solar,
+      consumption: json.consumption
+    };
 
-      request.open('GET', url, true);
+   parseData.time = new Date(parseData.time);
+   parseData.time.setSeconds(0);
+   parseData.time.setMilliseconds(0);
+   parseData.time = parseData.time.getTime();
 
-      request.onload = function () {
-        if (request.status >= 200 && request.status < 400) {
-          //console.log(JSON.parserequest.responseText);
-          console.log(JSON.parse(request.responseText));
+    mongo.db.collection("data").insertOne(parseData, function(err, res) { 
+      if (err) throw err;
+    });
+  }
+};
 
-          resolve();
-        } else {
-          reject(request.status); // Error handeling
+
+const engergy = {
+  init(){
+
+  },
+  getUsage() {
+    return new Promise((resolve, reject) => {
+      let temp = {
+        last: null,
+        first: null,
+        total: {
+          time: null,
+          consumption: null,
+          solar: null
         }
       };
 
-      request.onerror = function () {
-        reject("Failed to proform api req"); // Error handeling
-      };
+      this.getUsageDataFirst().then((dataFirst) => {
+        temp.first = dataFirst;
 
-      request.send();
+        this.getUsageDataLast().then((dataLast) => {
+          temp.last = dataLast;
+          temp.total.time = temp.last.time - temp.first.time;
+          temp.total.consumption = temp.last.consumption - temp.first.consumption;
+          temp.total.solar = temp.last.solar - temp.first.solar;
+          resolve(temp);
+        });
+      });
     });
 
-    return promise;
+  },
+  getUsageDataFirst(){
+    return new Promise((resolve, reject) => {
+      let query = {time: Date.parse('14 May 2018 15:33')}
+      mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
+        if (err) throw err;
+        resolve(result[0]);
+      });  
+    });
+  },
+  getUsageDataLast(){
+    return new Promise((resolve, reject) => {
+      let query = {time: Date.parse('14 May 2018 15:43')}
+      mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
+        if (err) throw err;
+        resolve(result[0]);
+      });  
+    });
   }
 };
+
+
+const mongo = {
+  db: null,
+  init(){
+    MongoClient.connect('mongodb://localhost/ceuvel', (err, client) => {
+      stomp.init()
+      this.db = client.db('ceuvel');
+    });
+  }
+};
+
+mongo.init();

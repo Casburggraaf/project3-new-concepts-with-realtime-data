@@ -68,7 +68,9 @@
 			template.renderState3();
 		},
 		renderState1() {
-			document.querySelector(".timestamp span").innerHTML = timestamp/60/1000 + ' minuten'
+			// document.querySelector(".timestamp span").innerHTML = timestamp/60/1000 + ' minuten';			
+			document.querySelector(".timestamp span").innerHTML = Math.round(window.data.total.time /60/60) + ' minuten'
+
 			document.querySelector(".food span").innerHTML = food
 			document.querySelector(".drinks span").innerHTML = drinks + ' drankjes'
 			document.querySelector(".price span").innerHTML = '€ ' + price
@@ -84,9 +86,11 @@
 		interval2: null,
 		Timeout: 120,
 		//CAS!!
-		consumption: 40,
-		solar: 22,
+		consumption: Math.round(window.data.total.consumption /15),
+		solar: Math.abs(Math.round(window.data.total.solar)),
 		init() {
+			console.log(this.consumption);
+			
 			this.interval1 = setInterval(this.fillLine, this.Timeout);
 		},
 		fillLine() {
