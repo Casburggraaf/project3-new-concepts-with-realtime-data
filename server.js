@@ -89,7 +89,11 @@ const engergy = {
       let query = {time: Date.parse('14 May 2018 15:33')}
       mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
         if (err) throw err;
-        resolve(result[0]);
+        resolve({ _id: "5af9900c2f160fe0f5c04bab",
+          time: 1526304780000,
+          solar: -2471.60009765625,
+          consumption: 2240.443817138672 });
+        //resolve(result[0]);
       });  
     });
   },
@@ -98,7 +102,11 @@ const engergy = {
       let query = {time: Date.parse('14 May 2018 15:43')}
       mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
         if (err) throw err;
-        resolve(result[0]);
+        resolve({ _id: "5af992646b305fe1b194861e",
+          time: 1526305380000,
+          solar: -2490.300048828125,
+          consumption: 3255.093780517578 });
+        // resolve(result[0]);
       });  
     });
   }
@@ -108,7 +116,7 @@ const engergy = {
 const mongo = {
   db: null,
   init(){
-    MongoClient.connect('mongodb://localhost/ceuvel', (err, client) => {
+    MongoClient.connect('mongodb://localhost/', (err, client) => {
       stomp.init()
       this.db = client.db('ceuvel');
     });
