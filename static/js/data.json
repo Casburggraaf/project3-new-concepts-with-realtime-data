@@ -1,0 +1,31 @@
+[{
+		"ordertime": 1526292544271,
+		"paymenttime": 1526303344271,
+		"timestamp": 5400000,
+		"price": 69.80,
+		"drinks": [{
+			"total": 26,
+			"sort": [
+				"Beer",
+				"Wine",
+				"Coca Cola"
+			]
+		}],
+		"food" : [{
+			"name": "MAGDA'S PANNENKOEKEN",
+			"description": "Pannekoeken voor grote en kleine Kids! Geserveerd met een topping naar keuze",
+	    "ingredients": [
+				"Meel",
+	      "Eieren",
+	      "Melk",
+	      "Zout",
+	      "Water"
+	    ],
+	    "extra": [
+	      "Jam",
+	      "Honing",
+	      "Kaas"
+	    ]
+		}]
+	}
+]

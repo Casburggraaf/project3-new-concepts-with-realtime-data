@@ -29,14 +29,24 @@ img {
 	transform: translateY(100vh);
 }
 
+.main h1 {
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	width: 50vw;
+	margin-left: 25vw;
+	text-align: center;
+}
+
 /* SVG CIRCLE */
 .circulair {
-	position: absolute;
+	position: relative;
 	z-index: 10;
 }
 
 .circulair svg {
-	margin-top: 10vh;
+	margin-top: 6vh;
 	margin-left: 10vw;
 	width: 80vw;
 	height: 80vh;
@@ -77,8 +87,113 @@ polyline {
 	stroke-linejoin: round;
 }
 
+/* ZERO STATE */
+.barcode {
+  width: 60vw;
+	margin-left: 20vw;
+	fill: white;
+}
+
+.barcode > g, .barcode > rect {
+  opacity: 0;
+}
+
+.barcode > g:nth-child(1) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.2s;
+}
+
+.barcode > g:nth-child(2) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.4s;
+}
+
+.barcode > g:nth-child(3) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.6s;
+}
+
+.barcode > g:nth-child(4) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.8s;
+}
+
+.barcode > g:nth-child(5) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1s;
+}
+
+.barcode > g:nth-child(6) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.2s;
+}
+
+.barcode > g:nth-child(7) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.4s;
+}
+
+.barcode > g:nth-child(8) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.6s;
+}
+
+.barcode > g:nth-child(9) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.8s;
+}
+
+.barcode > g:nth-child(10) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 2s;
+}
+
+.barcode > g:nth-child(11) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 2.2s;
+}
+
+.barcode > g:nth-child(12) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 2.4s;
+}
+
+.barcode > rect {
+  animation: fadeInLaser 1s forwards infinite;
+  animation-delay: 2.6s;
+}
+
+.st0 {
+	fill:#B90004;
+}
+/* STATE 0.1: personal */
+.data {
+	width: 50vw;
+	margin-left: 25vw;
+	margin-top: 25vh;
+	height: 50vh;
+	color: white;
+	line-height: 2em;
+	text-align: center;
+}
+
+.data span {
+	font-size: 2em;
+}
+
 /* STATE 1: energy */
 /* STATE 2: food */
+#countEnergy {
+	position: absolute;
+	top: 40vh;
+	left: 40vw;
+	text-align: center;
+	color: white;
+	font-size: 4em;
+	width: 20vw;
+	margin-left:
+}
+
 /* STATE 3: drinks */
 .waves {
 	z-index: 0;
@@ -187,8 +302,25 @@ nav button {
 }
 
 @keyframes progress {
-  /* to {
-    stroke-dashoffset: 312.717;
-       60%: 339.292 * (1 - 0.6) ≈ 135.717
-  } */
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInLaser {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
