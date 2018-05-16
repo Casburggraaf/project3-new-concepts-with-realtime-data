@@ -5,11 +5,346 @@
 }
 
 body {
-  height: 100%;
-  width: 100%;
-  height: 100vh;
-  width: 100vw;
   margin: 0;
-  background-color: #192C47;
+  background-color: #3C7046;
   font-family: 'Roboto', sans-serif;
+	overflow: hidden;
+}
+
+/* HEADER */
+img {
+	width: 10%;
+	margin-top: 2%;
+	margin-left: 2%;
+}
+
+/* SECTION MAIN */
+.main {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	height: 100vh;
+	width: 100vw;
+	opacity: 0;
+	transform: translateY(100vh);
+}
+
+.main h1 {
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	width: 50vw;
+	margin-left: 25vw;
+	text-align: center;
+}
+
+/* SVG CIRCLE */
+.circulair {
+	position: relative;
+	z-index: 10;
+}
+
+.circulair svg {
+	margin-top: 6vh;
+	margin-left: 10vw;
+	width: 80vw;
+	height: 80vh;
+	transform: rotate(-90deg);
+	overflow: hidden;
+}
+
+.circulair #circle {
+  fill: none;
+	stroke: rgb(138,144,155);
+  stroke-width: 2;
+	stroke-dasharray: 309.292;
+}
+
+.progress {
+  fill: none;
+  stroke: white;
+  stroke-width: 5;
+  stroke-dasharray: 339.292;
+  /* 2 * π * 54 ≈ 339.292*/
+  stroke-dashoffset: 339.292;
+	/* 230.71855999999997 */
+  /* animation: progress 4s linear forwards; */
+}
+
+line {
+	position: fixed;
+	z-index: 50;
+	stroke-width: 2;
+	stroke: rgb(138,144,155);
+}
+
+polyline {
+	stroke: rgba(255,255,255,0.5);
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* ZERO STATE */
+.barcode {
+  width: 60vw;
+	margin-left: 20vw;
+	fill: white;
+}
+
+.barcode > g, .barcode > rect {
+  opacity: 0;
+}
+
+.barcode > g:nth-child(1) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.2s;
+}
+
+.barcode > g:nth-child(2) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.4s;
+}
+
+.barcode > g:nth-child(3) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.6s;
+}
+
+.barcode > g:nth-child(4) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 0.8s;
+}
+
+.barcode > g:nth-child(5) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1s;
+}
+
+.barcode > g:nth-child(6) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.2s;
+}
+
+.barcode > g:nth-child(7) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.4s;
+}
+
+.barcode > g:nth-child(8) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.6s;
+}
+
+.barcode > g:nth-child(9) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 1.8s;
+}
+
+.barcode > g:nth-child(10) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 2s;
+}
+
+.barcode > g:nth-child(11) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 2.2s;
+}
+
+.barcode > g:nth-child(12) {
+  animation: fadeIn 2.6s forwards infinite;
+  animation-delay: 2.4s;
+}
+
+.barcode > rect {
+  animation: fadeInLaser 4s forwards infinite;
+  animation-delay: 2.6s;
+}
+
+.st0 {
+	fill:#B90004;
+}
+/* STATE 0.1: personal */
+.data {
+	width: 50vw;
+	margin-left: 25vw;
+	margin-top: 25vh;
+	height: 50vh;
+	color: white;
+	line-height: 2em;
+	text-align: center;
+}
+
+.data span {
+	font-size: 2em;
+	animation: pulse 1s forwards infinite;
+}
+
+/* STATE 1: energy */
+/* STATE 2: food */
+#countEnergy {
+	position: absolute;
+	top: 40vh;
+	left: 40vw;
+	text-align: center;
+	color: white;
+	font-size: 4em;
+	width: 20vw;
+	margin-left:
+}
+
+/* STATE 3: drinks */
+.waves {
+	z-index: 0;
+}
+
+.box {
+  height: 40vw;
+  width: 40vw;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.box .percent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 64px;
+}
+
+.box .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  transform: translate(0, 100%);
+  background: #6B8D62;
+}
+
+.box .water_wave {
+  width: 200%;
+  position: absolute;
+  bottom: 100%;
+}
+
+.box .water_wave_back {
+  right: 0;
+  fill: #A39E47;
+  animation: wave-back 1.4s infinite linear;
+}
+
+.box .water_wave_front {
+  left: 0;
+  fill: #6B8D62;
+  margin-bottom: -1px;
+	animation: wave-front .7s infinite linear;
+}
+
+/* DOT MENU */
+nav {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 20vh;
+	right: 3vw;
+	height: 50vh;
+	margin-top: 2%;
+	justify-content: center;
+	align-content: flex-end;
+}
+
+nav button {
+	cursor: pointer;
+	display: block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid white;
+	background-color: rgba(255,255,255,0.1);
+  margin-top: 0.5rem;
+}
+
+.activeButton {
+	background-color: white;
+}
+
+.activeSlider {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* KEYFRAMES */
+@keyframes wave-front {
+  100% {
+	  transform: translate(-50%, 0);
+  }
+}
+
+@keyframes wave-back {
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+
+@keyframes progress {
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInLaser {
+  from {
+		opacity: 1;
+    transform: translateY(-10%);
+  }
+  50% {
+		opacity: 1;
+    transform: translateY(5%)
+  }
+  to {
+		opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes move {
+  0%, 100% { transform: translateY(135%); }
+  50% { transform: translateY(0%); }
+  75% { transform: translateY(272%); }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }

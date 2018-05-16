@@ -1,14 +1,172 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style/style.css">
-  <title></title>
-</head>
-<body>
+<%- include('partials/head.ejs') %>
 
-  <script type="text/javascript" src="js/app.js" charset="utf-8"></script>
-</body>
-</html>
+	<header>
+		<img src="img/ceuvel.png" alt="logo"/>
+	</header>
+
+	<section class="main activeSlider">
+		<svg class="barcode" viewBox="0 0 512 512">
+		<g>
+			<g>
+				<path d="M467.7,103.4H44.3C19.9,103.4,0,123.3,0,147.7v216.6c0,24.4,19.9,44.3,44.3,44.3h423.4c24.4,0,44.3-19.9,44.3-44.3V147.7
+					C512,123.3,492.1,103.4,467.7,103.4z M482.5,364.3c0,8.1-6.6,14.8-14.8,14.8H44.3c-8.1,0-14.8-6.6-14.8-14.8V147.7
+					c0-8.1,6.6-14.8,14.8-14.8h423.4c8.1,0,14.8,6.6,14.8,14.8V364.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path d="M78.8,162.5c-8.2,0-14.8,6.6-14.8,14.8v157.5c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8V177.2
+					C93.5,169.1,86.9,162.5,78.8,162.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path d="M137.8,162.5c-8.2,0-14.8,6.6-14.8,14.8v88.6c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-88.6
+						C152.6,169.1,146,162.5,137.8,162.5z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path d="M137.8,300.3c-8.2,0-14.8,6.6-14.8,14.8v19.7c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-19.7
+						C152.6,306.9,146,300.3,137.8,300.3z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path d="M196.9,162.5c-8.2,0-14.8,6.6-14.8,14.8v88.6c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-88.6
+						C211.7,169.1,205.1,162.5,196.9,162.5z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path d="M196.9,300.3c-8.2,0-14.8,6.6-14.8,14.8v19.7c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-19.7
+						C211.7,306.9,205.1,300.3,196.9,300.3z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path d="M256,162.5c-8.2,0-14.8,6.6-14.8,14.8v157.5c0,8.2,6.6,14.8,14.8,14.8c8.2,0,14.8-6.6,14.8-14.8V177.2
+					C270.8,169.1,264.2,162.5,256,162.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path d="M315.1,162.5c-8.2,0-14.8,6.6-14.8,14.8v88.6c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-88.6
+						C329.8,169.1,323.2,162.5,315.1,162.5z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path d="M315.1,300.3c-8.2,0-14.8,6.6-14.8,14.8v19.7c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-19.7
+						C329.8,306.9,323.2,300.3,315.1,300.3z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path d="M374.2,162.5c-8.2,0-14.8,6.6-14.8,14.8v88.6c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-88.6
+						C388.9,169.1,382.3,162.5,374.2,162.5z"/>
+				</g>
+			</g>
+			<g>
+				<g>
+					<path d="M374.2,300.3c-8.2,0-14.8,6.6-14.8,14.8v19.7c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8v-19.7
+						C388.9,306.9,382.3,300.3,374.2,300.3z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path d="M433.2,162.5c-8.2,0-14.8,6.6-14.8,14.8v157.5c0,8.2,6.6,14.8,14.8,14.8s14.8-6.6,14.8-14.8V177.2
+					C448,169.1,441.4,162.5,433.2,162.5z"/>
+			</g>
+		</g>
+		<rect x="-1.2" y="224.9" class="st0" width="513.2" height="62.3"/>
+	</svg>
+	</section>
+	<section class="main state1">
+		<div class="data">
+			<p class="timestamp">U bent hier <span></span> geweest</p>
+			<p class="food">U heeft <span></span> gegeten</p>
+			<p class="drinks">U heeft <span></span> gedronken</p>
+			<p class="price">U heeft <span></span> betaald</p>
+		</div>
+	</section>
+	<section class="main state2">
+		<h1>Energieverbruik</h1>
+		<section class="circulair">
+			<svg viewBox="0 0 120 120">
+				<g>
+					<line x1="106" x2="108" y1="32" y2="14"/>
+					<line x1="106" x2="88" y1="31" y2="30"/>
+					<circle id="circle" cx="60" cy="60" r="54"/> 	<!-- these units are relative to the viewport (120 / 2) - (12 / 2) = 54	-->
+				</g>
+				<circle class="progress" cx="60" cy="60" r="54"/>
+			</svg>
+			<div id="countEnergy">0</div>
+
+		</section>
+	</section>
+	<section class="main state3">
+		<h1>Wat zit er in mijn gerecht?</h1>
+		<section class="circulair">
+			<svg viewBox="0 0 120 120">
+				<g>
+					<line x1="106" x2="108" y1="32" y2="14"/>
+					<line x1="106" x2="88" y1="31" y2="30"/>
+					<circle id="circle" cx="60" cy="60" r="54"/> 	<!-- these units are relative to the viewport (120 / 2) - (12 / 2) = 54	-->
+				</g>
+				<circle class="progress" cx="60" cy="60" r="54"/>
+			</svg>
+		</section>
+	</section>
+	<section class="main state4">
+		<h1>Drankjes versus toilet</h1>
+		<section class="circulair">
+			<svg viewBox="0 0 120 120">
+				<g>
+					<line x1="106" x2="108" y1="32" y2="14"/>
+					<line x1="106" x2="88" y1="31" y2="30"/>
+					<circle id="circle" cx="60" cy="60" r="54"/> 	<!-- these units are relative to the viewport (120 / 2) - (12 / 2) = 54	-->
+				</g>
+				<circle class="progress" cx="60" cy="60" r="54"/>
+			</svg>
+		</section>
+
+		<section class="waves">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="display: none;">
+			<symbol id="wave">
+				<path d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z"></path>
+				<path d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z"></path>
+				<path d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z"></path>
+				<path d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z"></path>
+			</symbol>
+			</svg>
+			<div class="box">
+				<div class="percent">
+					<div class="percentNum" id="count">0</div>
+					<div class="percentB"></div>
+				</div>
+				<div id="water" class="water">
+					<svg viewBox="0 0 560 20" class="water_wave water_wave_back">
+						<use xlink:href="#wave"></use>
+					</svg>
+					<svg viewBox="0 0 560 20" class="water_wave water_wave_front">
+						<use xlink:href="#wave"></use>
+					</svg>
+				</div>
+			</div>
+		</section>
+	</section>
+
+
+
+	<nav></nav>
+
+<%- include('partials/foot.ejs') %>
