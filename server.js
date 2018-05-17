@@ -20,38 +20,38 @@ function index(req, res) {
   })
 }
 
-const stomp = {
-  url: new SockJS('https://app.jouliette.net/stomp/'),
-  client: null,
-  data: [],
-  init(){
-    this.client = Stomp.over(this.url);
-    this.client.connect('web', 'mnwdTGgQu5zPmSrz', this.onConnect, console.error, '/');
-  },
-  onConnect(){
-    console.log("connected");
+// const stomp = {
+//   url: new SockJS('https://app.jouliette.net/stomp/'),
+//   client: null,
+//   data: [],
+//   init(){
+//     this.client = Stomp.over(this.url);
+//     this.client.connect('web', 'mnwdTGgQu5zPmSrz', this.onConnect, console.error, '/');
+//   },
+//   onConnect(){
+//     console.log("connected");
 
-    stomp.client.subscribe("/exchange/power/C0", stomp.onData);
-  },
-  onData(data){
-    let json = JSON.parse(data.body);
+//     stomp.client.subscribe("/exchange/power/C0", stomp.onData);
+//   },
+//   onData(data){
+//     let json = JSON.parse(data.body);
     
-    let parseData = {
-      time: Date.now(),
-      solar: json.solar,
-      consumption: json.consumption
-    };
+//     let parseData = {
+//       time: Date.now(),
+//       solar: json.solar,
+//       consumption: json.consumption
+//     };
 
-   parseData.time = new Date(parseData.time);
-   parseData.time.setSeconds(0);
-   parseData.time.setMilliseconds(0);
-   parseData.time = parseData.time.getTime();
+//    parseData.time = new Date(parseData.time);
+//    parseData.time.setSeconds(0);
+//    parseData.time.setMilliseconds(0);
+//    parseData.time = parseData.time.getTime();
 
-    mongo.db.collection("data").insertOne(parseData, function(err, res) { 
-      if (err) throw err;
-    });
-  }
-};
+//     // mongo.db.collection("data").insertOne(parseData, function(err, res) { 
+//     //   if (err) throw err;
+//     // });
+//   }
+// };
 
 
 const engergy = {
@@ -87,40 +87,40 @@ const engergy = {
   getUsageDataFirst(){
     return new Promise((resolve, reject) => {
       let query = {time: Date.parse('14 May 2018 15:33')}
-      mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
-        if (err) throw err;
+      // mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
+      //   if (err) throw err;
         resolve({ _id: "5af9900c2f160fe0f5c04bab",
           time: 1526304780000,
           solar: -2471.60009765625,
           consumption: 2240.443817138672 });
         //resolve(result[0]);
-      });  
+      // });  
     });
   },
   getUsageDataLast(){
     return new Promise((resolve, reject) => {
-      let query = {time: Date.parse('14 May 2018 15:43')}
-      mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
-        if (err) throw err;
+      // let query = {time: Date.parse('14 May 2018 15:43')}
+      // mongo.db.collection("data").find(query).limit(10).toArray(function(err, result) {
+      //   if (err) throw err;
         resolve({ _id: "5af992646b305fe1b194861e",
           time: 1526305380000,
           solar: -2490.300048828125,
           consumption: 3255.093780517578 });
         // resolve(result[0]);
-      });  
+      // });  
     });
   }
 };
 
 
-const mongo = {
-  db: null,
-  init(){
-    MongoClient.connect('mongodb://localhost/', (err, client) => {
-      stomp.init()
-      this.db = client.db('ceuvel');
-    });
-  }
-};
+// const mongo = {
+//   db: null,
+//   init(){
+//     MongoClient.connect('mongodb://localhost/', (err, client) => {
+//       stomp.init()
+//       this.db = client.db('ceuvel');
+//     });
+//   }
+// };
 
-mongo.init();
+// mongo.init();
